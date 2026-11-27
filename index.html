@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TELESHOP — Premium Smartphone E-Commerce Store</title>
+  <meta name="description" content="TELESHOP is a premium smartphone store offering 280+ verified smartphones across 20 global brands with Uzbek, English, and Russian support and fast delivery.">
+  <meta name="keywords" content="TELESHOP, smartphones, iPhone, Samsung Galaxy, Xiaomi, Redmi, POCO, Google Pixel, OnePlus, Uzbekistan">
+  <meta property="og:title" content="TELESHOP — Find Your Perfect Smartphone">
+  <meta property="og:description" content="Explore 280+ verified smartphones across 20 leading global brands with transparent USD & UZS pricing.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="public/images/placeholder-phone.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/css/style.css">
+  <script src="./src/js/app.js"></script>
+</head>
+<body>
+  <!-- Sticky Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="#home" class="brand-logo" aria-label="TELESHOP Home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 5h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="18.5" r="1" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="logo-text">TELE<span class="logo-accent">SHOP</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary Navigation">
+        <a href="#home" class="nav-link active" data-nav="home" data-i18n="nav.home">Home</a>
+        <a href="#catalog" class="nav-link" data-nav="catalog" data-i18n="nav.allPhones">All Phones</a>
+
+        <div class="nav-dropdown" id="brandsDropdown">
+          <button type="button" class="nav-link nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            <span data-i18n="nav.brands">Brands</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" id="brandsDropdownMenu" role="menu"></div>
+        </div>
+
+        <a href="#new-arrivals" class="nav-link" data-nav="new-arrivals" data-i18n="nav.newArrivals">New Arrivals</a>
+        <a href="#best-sellers" class="nav-link" data-nav="best-sellers" data-i18n="nav.bestSellers">Best Sellers</a>
+        <a href="#discounts" class="nav-link" data-nav="discounts" data-i18n="nav.discounts">Discounts</a>
+        <a href="#about" class="nav-link" data-nav="about" data-i18n="nav.about">About Us</a>
+        <a href="#contact" class="nav-link" data-nav="contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="icon-btn" id="navSearchBtn" aria-label="Search">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+
+        <button type="button" class="icon-btn badge-btn" id="compareNavBtn" aria-label="Compare">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+          <span class="badge-count" id="compareCount">0</span>
+        </button>
+
+        <button type="button" class="icon-btn badge-btn" id="wishlistNavBtn" aria-label="Wishlist">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="badge-count" id="wishlistCount">0</span>
+        </button>
+
+        <button type="button" class="icon-btn badge-btn" id="cartNavBtn" aria-label="Cart">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="badge-count" id="cartCount">0</span>
+        </button>
+
+        <div class="lang-selector" role="group" aria-label="Language selector">
+          <button type="button" class="lang-btn" data-lang="uz">UZ</button>
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="ru">RU</button>
+        </div>
+
+        <button type="button" class="icon-btn theme-btn" id="themeToggleBtn" aria-label="Toggle theme">
+          <svg class="icon-sun" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <button type="button" class="btn btn-sm btn-primary nav-auth-btn" id="authNavBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span id="authNavText" data-i18n="nav.loginRegister">Login / Register</span>
+        </button>
+
+        <button type="button" class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <div class="mobile-nav-links">
+        <a href="#home" class="mobile-nav-link" data-i18n="nav.home">Home</a>
+        <a href="#catalog" class="mobile-nav-link" data-i18n="nav.allPhones">All Phones</a>
+        <a href="#brands" class="mobile-nav-link" data-i18n="nav.brands">Brands</a>
+        <a href="#new-arrivals" class="mobile-nav-link" data-i18n="nav.newArrivals">New Arrivals</a>
+        <a href="#best-sellers" class="mobile-nav-link" data-i18n="nav.bestSellers">Best Sellers</a>
+        <a href="#discounts" class="mobile-nav-link" data-i18n="nav.discounts">Discounts</a>
+        <a href="#about" class="mobile-nav-link" data-i18n="nav.about">About Us</a>
+        <a href="#contact" class="mobile-nav-link" data-i18n="nav.contact">Contact</a>
+      </div>
+      <div class="mobile-nav-controls">
+        <div class="lang-selector mobile-lang" role="group" aria-label="Mobile language selector">
+          <button type="button" class="lang-btn" data-lang="uz">UZ</button>
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="ru">RU</button>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" id="mobileAuthBtn" data-i18n="nav.loginRegister">Login / Register</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-bg-orbs" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-grid"></span>
+      </div>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="pulse-dot"></span>
+            <span data-i18n="hero.badge">Official Flagship &amp; Global Warranty Store</span>
+          </div>
+          <h1 class="hero-title" data-i18n="hero.heading">FIND YOUR PERFECT SMARTPHONE</h1>
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            Explore 280+ verified smartphones from 20 leading global brands. Authentic specs, instant UZS &amp; USD pricing, and fast nationwide delivery.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#catalog" class="btn btn-primary btn-lg">
+              <span data-i18n="hero.shopNow">Shop Now</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#featured" class="btn btn-outline btn-lg" data-i18n="hero.exploreProducts">Explore Products</a>
+          </div>
+
+          <a href="#discounts" class="hero-offer-banner">
+            <span class="offer-tag-badge">-20%</span>
+            <span data-i18n="hero.offerTag">Seasonal Tech Drop — Up to 20% Off Flagships</span>
+          </a>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong id="statModelCount">288+</strong>
+              <span data-i18n="hero.statModels">Verified Models</span>
+            </div>
+            <div class="stat-item">
+              <strong>20</strong>
+              <span data-i18n="hero.statBrands">Global Brands</span>
+            </div>
+            <div class="stat-item">
+              <strong>2–4h</strong>
+              <span data-i18n="hero.statDelivery">Fast Delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-showcase-card" id="heroShowcaseCard">
+            <div class="showcase-glow"></div>
+            <div class="showcase-header">
+              <span class="showcase-label" data-i18n="hero.heroCardTitle">Flagship Series 2026</span>
+              <span class="showcase-sub" data-i18n="hero.heroCardSubtitle">Titanium Craftsmanship • AI Camera • 5G</span>
+            </div>
+            <div class="showcase-image-wrap">
+              <img id="heroPhoneImg" src="public/images/phones/ts-002-apple-iphone-18-pro-max.jpg" alt="Flagship Smartphone" loading="eager">
+            </div>
+            <div class="showcase-footer" id="heroShowcaseFooter"></div>
+            <div class="hero-switcher" id="heroSwitcher"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container hero-brands-strip">
+        <span class="hero-brands-label" data-i18n="hero.featuredBrandsLabel">Featured Brands</span>
+        <div class="hero-brand-pills" id="heroBrandPills"></div>
+      </div>
+    </section>
+
+    <!-- Popular Brands Section -->
+    <section class="section" id="brands">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.popularBrands">Popular Brands</h2>
+            <p class="section-sub" data-i18n="sections.popularBrandsSub">Click any brand to filter the catalog instantly.</p>
+          </div>
+        </div>
+        <div class="brands-grid" id="brandsGrid"></div>
+      </div>
+    </section>
+
+    <!-- Featured Smartphones -->
+    <section class="section section-alt" id="featured">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.featured">Featured Smartphones</h2>
+            <p class="section-sub" data-i18n="sections.featuredSub">Handpicked flagship devices with top performance and display quality.</p>
+          </div>
+          <a href="#catalog" class="btn btn-ghost btn-sm" data-i18n="hero.exploreProducts">Explore Products</a>
+        </div>
+        <div class="product-grid" id="featuredGrid"></div>
+      </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="section" id="new-arrivals">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.newArrivals">New Arrivals</h2>
+            <p class="section-sub" data-i18n="sections.newArrivalsSub">The latest smartphone releases from 2025 &amp; 2026.</p>
+          </div>
+        </div>
+        <div class="product-grid" id="newArrivalsGrid"></div>
+      </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="section section-alt" id="best-sellers">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.bestSellers">Best Sellers</h2>
+            <p class="section-sub" data-i18n="sections.bestSellersSub">Customer favorites with highest ratings and reliability.</p>
+          </div>
+        </div>
+        <div class="product-grid" id="bestSellersGrid"></div>
+      </div>
+    </section>
+
+    <!-- Special Offers & Discounts -->
+    <section class="section" id="discounts">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.specialOffers">Special Offers &amp; Discounts</h2>
+            <p class="section-sub" data-i18n="sections.specialOffersSub">Limited-time price drops on flagship and midrange devices.</p>
+          </div>
+        </div>
+        <div class="promo-banner" id="promoBanner">
+          <div class="promo-content">
+            <span class="promo-chip" data-i18n="hero.offerTag">Seasonal Tech Drop — Up to 20% Off Flagships</span>
+            <h3>TELESHOP Flash Deals</h3>
+            <p data-i18n="sections.specialOffersSub">Limited-time price drops on flagship and midrange devices.</p>
+          </div>
+          <button type="button" class="btn btn-primary" id="filterDiscountsBtn" data-i18n="filters.discountOnly">Discounted Only</button>
+        </div>
+        <div class="product-grid" id="discountsGrid"></div>
+      </div>
+    </section>
+
+    <!-- Complete Interactive Catalog with Advanced Search & Filters -->
+    <section class="section section-alt" id="catalog">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.allCatalog">Complete Smartphone Catalog</h2>
+            <p class="section-sub" data-i18n="sections.allCatalogSub">Filter, search, and compare across our entire verified smartphone lineup.</p>
+          </div>
+          <div class="catalog-counter">
+            <strong id="resultsCountNum">0</strong>
+            <span data-i18n="filters.resultsFound">smartphones found</span>
+          </div>
+        </div>
+
+        <!-- Category Quick Tabs -->
+        <div class="category-tabs" id="categoryTabs" role="tablist">
+          <button type="button" class="cat-tab active" data-category="all" data-i18n="filters.quickTabAll">All</button>
+          <button type="button" class="cat-tab" data-category="flagship" data-i18n="filters.quickTabFlagship">Flagship</button>
+          <button type="button" class="cat-tab" data-category="gaming" data-i18n="filters.quickTabGaming">Gaming</button>
+          <button type="button" class="cat-tab" data-category="foldable" data-i18n="filters.quickTabFoldable">Foldable</button>
+          <button type="button" class="cat-tab" data-category="camera" data-i18n="filters.quickTabCamera">Camera</button>
+          <button type="button" class="cat-tab" data-category="budget" data-i18n="filters.quickTabBudget">Budget</button>
+        </div>
+
+        <!-- Advanced Search & Filter Panel -->
+        <div class="filter-panel">
+          <div class="search-row">
+            <div class="search-box-wrap">
+              <label for="catalogSearch" class="sr-only" data-i18n="filters.searchLabel">Search Catalog</label>
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="search" id="catalogSearch" class="search-input" autocomplete="off" data-i18n-placeholder="nav.searchPlaceholder" placeholder="Search smartphones, brands, processors...">
+              <div class="search-suggestions" id="searchSuggestions" hidden></div>
+            </div>
+
+            <div class="sort-wrap">
+              <label for="sortSelect" class="filter-inline-label" data-i18n="filters.sortBy">Sort By</label>
+              <select id="sortSelect" class="filter-select">
+                <option value="featured" data-i18n="filters.sortFeatured">Most Popular</option>
+                <option value="cheapest" data-i18n="filters.sortCheapest">Cheapest First</option>
+                <option value="expensive" data-i18n="filters.sortExpensive">Most Expensive First</option>
+                <option value="rating" data-i18n="filters.sortRating">Highest Rated</option>
+                <option value="newest" data-i18n="filters.sortNewest">Newest First</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filters-grid">
+            <div class="filter-field">
+              <label for="filterBrand" data-i18n="filters.brand">Brand</label>
+              <select id="filterBrand" class="filter-select">
+                <option value="all" data-i18n="filters.allBrands">All Brands</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label for="filterMinPrice" data-i18n="filters.minPrice">Min Price ($)</label>
+              <input type="number" id="filterMinPrice" class="filter-input" min="0" step="50" placeholder="0">
+            </div>
+
+            <div class="filter-field">
+              <label for="filterMaxPrice" data-i18n="filters.maxPrice">Max Price ($)</label>
+              <input type="number" id="filterMaxPrice" class="filter-input" min="0" step="50" placeholder="2500">
+            </div>
+
+            <div class="filter-field">
+              <label for="filterRam" data-i18n="filters.ram">RAM</label>
+              <select id="filterRam" class="filter-select">
+                <option value="all" data-i18n="filters.allRam">Any RAM</option>
+                <option value="4">4 GB+</option>
+                <option value="6">6 GB+</option>
+                <option value="8">8 GB+</option>
+                <option value="12">12 GB+</option>
+                <option value="16">16 GB+</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label for="filterStorage" data-i18n="filters.storage">Storage</label>
+              <select id="filterStorage" class="filter-select">
+                <option value="all" data-i18n="filters.allStorage">Any Storage</option>
+                <option value="64">64 GB</option>
+                <option value="128">128 GB</option>
+                <option value="256">256 GB</option>
+                <option value="512">512 GB</option>
+                <option value="1024">1 TB</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label for="filterScreen" data-i18n="filters.screen">Screen Size</label>
+              <select id="filterScreen" class="filter-select">
+                <option value="all" data-i18n="filters.allScreen">Any Size</option>
+                <option value="compact" data-i18n="filters.screenCompact">Compact (&lt; 6.4")</option>
+                <option value="standard" data-i18n="filters.screenStandard">Standard (6.4" - 6.7")</option>
+                <option value="large" data-i18n="filters.screenLarge">Large (&gt; 6.7")</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label for="filterCamera" data-i18n="filters.camera">Camera</label>
+              <select id="filterCamera" class="filter-select">
+                <option value="all" data-i18n="filters.allCamera">Any Camera</option>
+                <option value="48" data-i18n="filters.camera48">48 MP+</option>
+                <option value="50" data-i18n="filters.camera50">50 MP+</option>
+                <option value="108" data-i18n="filters.camera108">108 MP+</option>
+                <option value="200" data-i18n="filters.camera200">200 MP</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label for="filterBattery" data-i18n="filters.battery">Battery</label>
+              <select id="filterBattery" class="filter-select">
+                <option value="all" data-i18n="filters.allBattery">Any Battery</option>
+                <option value="4500" data-i18n="filters.battery4500">4500 mAh+</option>
+                <option value="5000" data-i18n="filters.battery5000">5000 mAh+</option>
+                <option value="6000" data-i18n="filters.battery6000">6000 mAh+</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-footer">
+            <div class="filter-toggles">
+              <label class="checkbox-pill">
+                <input type="checkbox" id="filterDiscountOnly">
+                <span data-i18n="filters.discountOnly">Discounted Only</span>
+              </label>
+              <label class="checkbox-pill">
+                <input type="checkbox" id="filterInStockOnly">
+                <span data-i18n="filters.inStockOnly">In Stock Only</span>
+              </label>
+            </div>
+            <button type="button" class="btn btn-outline btn-sm" id="clearFiltersBtn" data-i18n="filters.clearFilters">Clear Filters</button>
+          </div>
+        </div>
+
+        <!-- Catalog Product Grid -->
+        <div class="product-grid" id="catalogGrid"></div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="catalogEmptyState" hidden>
+          <div class="empty-icon">🔍</div>
+          <h3 data-i18n="filters.noResultsTitle">No Smartphones Found</h3>
+          <p data-i18n="filters.noResultsDesc">Try clearing some filters or searching with a different brand, model, or processor.</p>
+          <button type="button" class="btn btn-primary" id="emptyClearBtn" data-i18n="filters.clearFilters">Clear Filters</button>
+        </div>
+
+        <!-- Pagination / Load More -->
+        <div class="catalog-pagination" id="catalogPagination">
+          <span class="pagination-info" id="paginationInfo"></span>
+          <div class="pagination-actions">
+            <button type="button" class="btn btn-primary" id="loadMoreBtn" data-i18n="filters.loadMore">Load More Smartphones</button>
+            <button type="button" class="btn btn-outline" id="showAllBtn" data-i18n="filters.showAll">Show All</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommended For You -->
+    <section class="section" id="recommended">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.recommended">Recommended For You</h2>
+            <p class="section-sub" data-i18n="sections.recommendedSub">Balanced performance, battery life, and camera value.</p>
+          </div>
+        </div>
+        <div class="product-grid" id="recommendedGrid"></div>
+      </div>
+    </section>
+
+    <!-- Recently Viewed -->
+    <section class="section section-alt" id="recently-viewed" hidden>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.recentlyViewed">Recently Viewed</h2>
+            <p class="section-sub" data-i18n="sections.recentlyViewedSub">Pick up right where you left off.</p>
+          </div>
+        </div>
+        <div class="product-grid" id="recentlyViewedGrid"></div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.reviews">Customer Reviews</h2>
+            <p class="section-sub" data-i18n="sections.reviewsSub">Verified feedback from smartphone buyers across Uzbekistan.</p>
+          </div>
+        </div>
+        <div class="reviews-grid" id="reviewsGrid"></div>
+      </div>
+    </section>
+
+    <!-- About & Contact -->
+    <section class="section section-alt" id="about">
+      <div class="container about-contact-grid">
+        <div class="about-card">
+          <h2 class="section-title" data-i18n="sections.aboutTitle">About TELESHOP</h2>
+          <p class="about-body" data-i18n="sections.aboutBody"></p>
+          <ul class="about-points">
+            <li><span class="check-dot">✓</span><span data-i18n="sections.aboutPoint1"></span></li>
+            <li><span class="check-dot">✓</span><span data-i18n="sections.aboutPoint2"></span></li>
+            <li><span class="check-dot">✓</span><span data-i18n="sections.aboutPoint3"></span></li>
+            <li><span class="check-dot">✓</span><span data-i18n="sections.aboutPoint4"></span></li>
+          </ul>
+        </div>
+        <div class="contact-card" id="contact">
+          <h2 class="section-title" data-i18n="sections.contactTitle">Need Help Choosing?</h2>
+          <p class="about-body" data-i18n="sections.contactBody"></p>
+          <div class="contact-items">
+            <a href="tel:+998712004500" class="contact-item">
+              <strong>📞</strong>
+              <span data-i18n="sections.contactPhone">+998 (71) 200-45-00</span>
+            </a>
+            <a href="mailto:support@teleshop.uz" class="contact-item">
+              <strong>✉️</strong>
+              <span data-i18n="sections.contactEmail">support@teleshop.uz</span>
+            </a>
+            <div class="contact-item">
+              <strong>📍</strong>
+              <span data-i18n="sections.contactAddress">Tashkent, Amir Temur Avenue 108, Tech Plaza</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title" data-i18n="sections.faq">Frequently Asked Questions</h2>
+            <p class="section-sub" data-i18n="sections.faqSub">Everything you need to know about warranty, delivery, and payments.</p>
+          </div>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand-logo">
+          <span class="logo-text">TELE<span class="logo-accent">SHOP</span></span>
+        </a>
+        <p data-i18n="footer.tagline">Your trusted destination for authentic flagship, gaming, and everyday smartphones across Uzbekistan.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.customerService">Customer Service</h4>
+        <ul>
+          <li><a href="#contact" data-i18n="footer.contactUs">Contact Us</a></li>
+          <li><a href="#faq" data-i18n="footer.faq">FAQ</a></li>
+          <li><button type="button" class="footer-link-btn" data-info="delivery" data-i18n="footer.deliveryInfo">Delivery Information</button></li>
+          <li><button type="button" class="footer-link-btn" data-info="return" data-i18n="footer.returnPolicy">Return Policy</button></li>
+          <li><button type="button" class="footer-link-btn" data-info="warranty" data-i18n="footer.warranty">Warranty</button></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.company">Company</h4>
+        <ul>
+          <li><a href="#about" data-i18n="footer.aboutUs">About Us</a></li>
+          <li><button type="button" class="footer-link-btn" data-info="privacy" data-i18n="footer.privacyPolicy">Privacy Policy</button></li>
+          <li><button type="button" class="footer-link-btn" data-info="terms" data-i18n="footer.terms">Terms &amp; Conditions</button></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="footer.followUs">Follow Us</h4>
+        <div class="social-links">
+          <a href="https://t.me" target="_blank" rel="noopener noreferrer" aria-label="Telegram">Telegram</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p data-i18n="footer.rights">© 2026 TELESHOP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Compare Tray -->
+  <div class="compare-tray" id="compareTray" hidden>
+    <div class="compare-tray-info">
+      <strong id="compareTrayCount">0/3</strong>
+      <span data-i18n="nav.compare">Compare</span>
+    </div>
+    <button type="button" class="btn btn-primary btn-sm" id="openCompareTrayBtn" data-i18n="compare.openCompare">Compare Now</button>
+    <button type="button" class="btn btn-ghost btn-sm" id="clearCompareTrayBtn" aria-label="Clear">&times;</button>
+  </div>
+
+  <!-- Product Detail / Quick View Modal -->
+  <div class="modal-backdrop" id="productModal" hidden role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <div class="modal-dialog modal-lg">
+      <button type="button" class="modal-close" data-close-modal="productModal" aria-label="Close">&times;</button>
+      <div class="product-modal-body" id="productModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Shopping Cart Drawer -->
+  <div class="drawer-backdrop" id="cartDrawer" hidden role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+    <aside class="drawer-panel">
+      <div class="drawer-header">
+        <h3 id="cartDrawerTitle" data-i18n="cart.title">Shopping Cart</h3>
+        <button type="button" class="modal-close" data-close-modal="cartDrawer" aria-label="Close">&times;</button>
+      </div>
+      <div class="drawer-body" id="cartDrawerBody"></div>
+      <div class="drawer-footer" id="cartDrawerFooter"></div>
+    </aside>
+  </div>
+
+  <!-- Wishlist Drawer -->
+  <div class="drawer-backdrop" id="wishlistDrawer" hidden role="dialog" aria-modal="true" aria-labelledby="wishlistDrawerTitle">
+    <aside class="drawer-panel">
+      <div class="drawer-header">
+        <h3 id="wishlistDrawerTitle" data-i18n="wishlist.title">Saved Wishlist</h3>
+        <button type="button" class="modal-close" data-close-modal="wishlistDrawer" aria-label="Close">&times;</button>
+      </div>
+      <div class="drawer-body" id="wishlistDrawerBody"></div>
+    </aside>
+  </div>
+
+  <!-- Comparison Modal -->
+  <div class="modal-backdrop" id="compareModal" hidden role="dialog" aria-modal="true" aria-labelledby="compareModalTitle">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header-bar">
+        <div>
+          <h3 id="compareModalTitle" data-i18n="compare.title">Smartphone Comparison</h3>
+          <span class="modal-subtitle" data-i18n="compare.highlightDiff">Differences highlighted</span>
+        </div>
+        <div class="modal-header-actions">
+          <button type="button" class="btn btn-outline btn-sm" id="clearCompareModalBtn" data-i18n="compare.clearCompare">Clear Comparison</button>
+          <button type="button" class="modal-close" data-close-modal="compareModal" aria-label="Close">&times;</button>
+        </div>
+      </div>
+      <div class="compare-modal-body" id="compareModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-backdrop" id="checkoutModal" hidden role="dialog" aria-modal="true" aria-labelledby="checkoutModalTitle">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header-bar">
+        <div>
+          <h3 id="checkoutModalTitle" data-i18n="checkout.title">Checkout &amp; Delivery</h3>
+          <p class="modal-subtitle" data-i18n="checkout.subtitle"></p>
+        </div>
+        <button type="button" class="modal-close" data-close-modal="checkoutModal" aria-label="Close">&times;</button>
+      </div>
+      <div class="checkout-modal-body" id="checkoutModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Auth & Account Modal -->
+  <div class="modal-backdrop" id="authModal" hidden role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+    <div class="modal-dialog modal-md">
+      <button type="button" class="modal-close" data-close-modal="authModal" aria-label="Close">&times;</button>
+      <div id="authModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Policy / Info Modal -->
+  <div class="modal-backdrop" id="infoModal" hidden role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-header-bar">
+        <h3 id="infoModalTitle"></h3>
+        <button type="button" class="modal-close" data-close-modal="infoModal" aria-label="Close">&times;</button>
+      </div>
+      <div class="info-modal-body" id="infoModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="src/js/translations.js"></script>
+  <script src="src/js/products.js"></script>
+  <script src="src/js/cart.js"></script>
+  <script src="src/js/checkout.js"></script>
+  <script src="src/js/app.js"></script>
+</body>
+</html>

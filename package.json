@@ -1,0 +1,12 @@
+{
+  "name": "teleshop-ecommerce",
+  "version": "1.0.0",
+  "description": "TELESHOP — Modern multilingual smartphone e-commerce platform with Telegram Bot order integration on Vercel.",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
